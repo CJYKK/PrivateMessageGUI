@@ -4,12 +4,12 @@ main: com.cjykk.privatemessagegui.PrivateMessageGUI
 api-version: '1.13'
 prefix: PMGUI
 author: CJYKK
-description: 给私聊加上GUI
+description: 让私聊支持GUI选人
 website: https://github.com/CJYKK/PrivateMessageGUI
 commands:
   pmgui:
-    description: Private message GUI
+    description: 打开私聊GUI
     usage: /pmgui
   pmcancel:
-    description: Cancel send private message.
+    description: 取消私聊
     usage: /pmcancel

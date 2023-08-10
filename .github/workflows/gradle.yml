@@ -31,5 +31,5 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-artifact@v3
         with:
-          name: FirstJoinOP
+          name: PrivateMessageGUI
           path: build/libs/*

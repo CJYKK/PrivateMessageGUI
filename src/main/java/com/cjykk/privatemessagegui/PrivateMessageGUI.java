@@ -59,9 +59,9 @@ public final class PrivateMessageGUI extends JavaPlugin implements Listener {
                 Player player = (Player) sender;
                 if (playerConversations.containsKey(player)) {
                     playerConversations.remove(player);
-                    player.sendMessage(ChatColor.GREEN + "已取消私信。");
+                    player.sendMessage(ChatColor.GREEN + "已取消私聊。");
                 } else {
-                    player.sendMessage(ChatColor.RED + "您当前不在私信会话中。");
+                    player.sendMessage(ChatColor.RED + "您当前不在私聊会话中。");
                 }
             } else {
                 sender.sendMessage(ChatColor.RED + "只有玩家可以使用此命令。");
@@ -73,7 +73,7 @@ public final class PrivateMessageGUI extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        if (event.getView().getTitle().equals("请选择私信对象")) {
+        if (event.getView().getTitle().equals("请选择私聊对象")) {
             event.setCancelled(true);
 
             ItemStack clickedItem = event.getCurrentItem();
@@ -85,7 +85,7 @@ public final class PrivateMessageGUI extends JavaPlugin implements Listener {
                     Player player = (Player) event.getWhoClicked();
                     playerConversations.put(player, targetPlayer);
                     player.closeInventory();
-                    player.sendMessage("请输入发给 " + targetPlayer.getName() + " 的私信内容（或使用 /pmcancel 取消）：");
+                    player.sendMessage("请输入发给 " + targetPlayer.getName() + " 的私聊内容（或使用 /pmcancel 取消）：");
                 }
             }
         }
@@ -101,7 +101,7 @@ public final class PrivateMessageGUI extends JavaPlugin implements Listener {
             String message = event.getMessage();
 
             if (message.equalsIgnoreCase("/pmcancel")) {
-                player.sendMessage(ChatColor.GREEN + "已取消私信。");
+                player.sendMessage(ChatColor.GREEN + "已取消私聊。");
             } else {
                 Bukkit.getScheduler().runTask(this, () -> Bukkit.dispatchCommand(player, "msg " + targetPlayer.getName() + " " + message));
             }
@@ -109,7 +109,7 @@ public final class PrivateMessageGUI extends JavaPlugin implements Listener {
     }
 
     private void openPlayerListGUI(Player player) {
-        Inventory playerListGUI = Bukkit.createInventory(player, 54, "请选择私信对象");
+        Inventory playerListGUI = Bukkit.createInventory(player, 54, "请选择私聊对象");
 
         for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
             ItemStack playerHead = createPlayerHeadItem(onlinePlayer.getName());
@@ -126,7 +126,7 @@ public final class PrivateMessageGUI extends JavaPlugin implements Listener {
         skullMeta.setDisplayName(ChatColor.RESET + playerName);
 
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.AQUA + "点击发送私信！");
+        lore.add(ChatColor.AQUA + "点击发送私聊！");
         skullMeta.setLore(lore);
 
         playerHead.setItemMeta(skullMeta);
